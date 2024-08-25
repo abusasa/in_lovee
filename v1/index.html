@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vechnaya love.</title>
+    <link rel="shortcut icon" href="heart.png" type="image/x-png">
+    <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            background: #111;
+            font-family: 'ArcadeClassic', sans-serif;
+        }
+
+        .content{
+            display: flex;
+            height: 90vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .heart {
+            width: 300px;
+        }
+
+        .date{
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .value {
+            margin-left: 8px;
+        }
+        .value:first-child{
+            margin-left: 0px;
+        }
+        .colorful{
+            color: #d83c49;
+        }
+    </style>
+
+    <div class="content">
+        <img class="heart" src="heart.png"/>
+        <div class="date">
+            <span class="value colorful month">0month</span>
+            <span class="value day">0d</span>
+            <span class="value hour">0h</span>
+            <span class="value minute">0m</span>
+            <span class="value second">0s</span>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <script>
+        let loop = () => {
+            let now = Math.floor(Date.now() / 1000);
+            let time = moment.duration(now -22464000, 'seconds');
+
+            document.querySelector(".month").textContent = time.month().toString() + "n";
+            document.querySelector(".day").textContent = time.days().toString() + "d";
+            document.querySelector(".hour").textContent = time.hours().toString() + "h";
+            document.querySelector(".minute").textContent = time.minutes().toString() + "m";
+            document.querySelector(".second").textContent = time.seconds().toString() + "s";
+
+            setTimeout(loop, 1000);
+        }
+
+        loop();
+    </script>
+</body>
+</html>
